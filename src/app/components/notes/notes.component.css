@@ -1,0 +1,47 @@
+table {
+    width: 100%;
+}
+
+.full-width {
+    font-size: 14px;
+    width: 100%;
+}
+
+.my-card {
+    max-width: 55%;
+}
+
+.mat-paginator {
+    display: flex;
+    justify-content: center;
+} 
+
+.firstElement{
+    display: flex;
+    flex-direction: column;
+}
+
+.mat-row {
+    height: auto;
+  }
+  
+.mat-cell {
+    padding: 15px 15px 15px 0px;
+    vertical-align: top;
+}
+
+.mat-column-link {
+    width: 20%;
+}
+.mat-column-message {
+    width: 58%;
+}
+
+.mat-column-details {
+    font-weight: 600;
+    width: 22%;
+}
+
+th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type {
+    padding: 15px 15px 15px 0px;
+}

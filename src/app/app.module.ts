@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 
@@ -11,12 +12,21 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { MatSortModule } from '@angular/material/sort';
+import { CalendarModule } from 'primeng/calendar';
+import { CardModule } from 'primeng/card';
+import { ButtonModule } from 'primeng/button';
+
+import { NotesComponent } from './components/notes/notes.component';
+import { CalenderComponent } from './components/calendar/calendar.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NotesComponent,
+    CalenderComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     BrowserAnimationsModule,
     MatPaginatorModule,
@@ -25,7 +35,10 @@ import { MatSortModule } from '@angular/material/sort';
     MatInputModule,
     MatSelectModule,
     MatCardModule,
-    MatSortModule
+    MatSortModule,
+    CalendarModule,
+    CardModule,
+    ButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
