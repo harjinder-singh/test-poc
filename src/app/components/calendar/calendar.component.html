@@ -1,15 +1,16 @@
 <div class="flex justify-content-center">
     <div class="form flex justify-content-center flex-column">
         <p-card [style]="{'width': '50rem', 'margin-bottom': '2em', 'margin-top': '5em'}">
-            <ng-template pTemplate="header">
+            <div class="my-header">
                 <span class="p-buttonset">
-                    <button pButton pRipple label="Year" (click)="onCalendarChange('Year')"></button>
-                    <button pButton pRipple label="Month" (click)="onCalendarChange('Month')"></button>
-                    <button pButton pRipple label="Day" (click)="onCalendarChange('Day')"></button>
-                    <button pButton pRipple label="Custom" (click)="onCalendarChange('Custom')"></button>
+                    <button pButton label="Year" [class.p-button-outlined]="selectedButton === 'year'" (click)="onCalendarChange('Year')"></button>
+                    <button pButton label="Month" [class.p-button-outlined]="selectedButton === 'month'" (click)="onCalendarChange('Month')"></button>
+                    <button pButton label="Day" [class.p-button-outlined]="selectedButton === 'day'" (click)="onCalendarChange('Day')"></button>
+                    <button pButton label="Custom" [class.p-button-outlined]="selectedButton === 'custom'" (click)="onCalendarChange('Custom')"></button>
                 </span>
                 <p-calendar #myCalendar [(ngModel)]="selectedDate" [showIcon]="true" [view]="view" [dateFormat]="dateFormat" [selectionMode]="selectionMode" clear></p-calendar>
-            </ng-template>
+                <p-button label="Apply"></p-button>
+            </div>
         </p-card>
     </div>
 </div>

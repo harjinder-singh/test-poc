@@ -8,6 +8,7 @@ import { CalendarTypeView } from 'primeng/calendar';
 })
 export class CalenderComponent implements OnInit {
   selectedDate: any;
+  selectedButton: string = "day";
   view: CalendarTypeView = "date";
   dateFormat: string = "mm/dd/yy";
   selectionMode: string = "single";
@@ -25,23 +26,28 @@ export class CalenderComponent implements OnInit {
       case "Year":
           this.view = "year";
           this.dateFormat = "yy";
+          this.selectedButton = "year";
           break;
       case "Month":
         this.view = "month";
         this.dateFormat = "mm/yy";
+        this.selectedButton = "month";
         break;
       case "Day":
         this.view = "date";
         this.dateFormat = "mm/dd/yy";
+        this.selectedButton = "day";
         break;
       case "Custom" :
         this.view = "date";
         this.dateFormat = "mm/dd/yy";
         this.selectionMode = "range";
+        this.selectedButton = "custom";
         break;
       default: 
         this.view = "date";
         this.dateFormat = "mm/dd/yy";
+        this.selectedButton = "day";
     }
   }
 }
