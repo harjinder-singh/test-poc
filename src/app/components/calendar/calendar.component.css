@@ -1,4 +1,13 @@
+table {
+    width: 100%;
+}
+
 .my-header{
     display: flex;
     justify-content: space-around;
+}
+
+.mat-paginator {
+    display: flex;
+    justify-content: center;
 }

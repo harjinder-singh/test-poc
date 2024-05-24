@@ -15,6 +15,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { CalendarModule } from 'primeng/calendar';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
+import { SelectButtonModule } from 'primeng/selectbutton';
 
 import { NotesComponent } from './components/notes/notes.component';
 import { CalenderComponent } from './components/calendar/calendar.component';
@@ -38,7 +39,8 @@ import { CalenderComponent } from './components/calendar/calendar.component';
     MatSortModule,
     CalendarModule,
     CardModule,
-    ButtonModule
+    ButtonModule,
+    SelectButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
