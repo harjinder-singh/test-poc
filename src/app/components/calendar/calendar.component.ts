@@ -4,8 +4,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource } from '@angular/material/table';
 import { MatSort, Sort } from '@angular/material/sort';
 
-import { Application } from '../../model/application';
-import { ApplicationData } from '../../model/application';
+import { Application, ApplicationData } from '../../model/Application';
 import { 
   ButtonNameType,
   ButtonValueType,
