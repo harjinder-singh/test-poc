@@ -2,6 +2,9 @@
     <div class="form flex justify-content-center flex-column">
         <p-card [style]="{'width': '50rem', 'margin-bottom': '2em', 'margin-top': '5em'}">
             <div class="flex flex-column gap-4">
+                <div class="heading">
+                    <h1>Application Data</h1>
+                  </div>
                 <div class="flex gap-4">
                     <p-selectButton [options]="calendarOptions" [(ngModel)]="selectedButton" optionLabel="name" optionValue="value" (click)="onCalendarChange()"></p-selectButton>
                     <p-calendar #myCalendar [(ngModel)]="selectedDate" [showIcon]="true" [view]="view" [dateFormat]="dateFormat" [selectionMode]="selectionMode"></p-calendar>

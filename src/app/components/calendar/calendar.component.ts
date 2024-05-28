@@ -2,11 +2,19 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { CalendarTypeView } from 'primeng/calendar';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource } from '@angular/material/table';
-
-import { Application } from '../../model/application';
 import { MatSort, Sort } from '@angular/material/sort';
 
+import { Application } from '../../model/application';
 import { ApplicationData } from '../../model/application';
+import { 
+  ButtonNameType,
+  ButtonValueType,
+  FilterType,
+  ViewType,
+  SelectionModeType,
+  DateFormatType
+} from './calendar.types';
+
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
@@ -15,15 +23,15 @@ import { ApplicationData } from '../../model/application';
 export class CalenderComponent implements OnInit {
   selectedDate: any;
   calendarOptions = [
-      {name: 'Year', value: 'year'},
-      {name: 'Month', value: 'month'},
-      {name: 'Day', value: 'day'},
-      {name: 'Custom', value: 'custom'},
+      {name: ButtonNameType.YEAR, value: ButtonValueType.YEAR},
+      {name: ButtonNameType.MONTH, value: ButtonValueType.MONTH},
+      {name: ButtonNameType.DAY, value: ButtonValueType.DAY},
+      {name: ButtonNameType.CUSTOM, value: ButtonValueType.CUSTOM},
   ];
-  selectedButton: string = "day";
-  view: CalendarTypeView = "date";
-  dateFormat: string = "mm/dd/yy";
-  selectionMode: string = "single";
+  selectedButton: string = ButtonValueType.DAY;
+  view: CalendarTypeView = ViewType.DATE;
+  dateFormat: string = DateFormatType.DAY;
+  selectionMode: string = SelectionModeType.SINGLE;
   sortedData: Application[] = [];
   data: Application[] = ApplicationData;
   displayedColumns: string[] = [
@@ -55,34 +63,34 @@ export class CalenderComponent implements OnInit {
   }
 
   onCalendarChange(){
-    this.selectionMode = "single";
+    this.selectionMode = SelectionModeType.SINGLE;
     this.selectedDate = null;
     switch(this.selectedButton){
-      case "year":
-          this.view = "year";
-          this.dateFormat = "yy";
-          this.selectedButton = "year";
+      case ButtonValueType.YEAR:
+          this.view = ViewType.YEAR;
+          this.dateFormat = DateFormatType.YEAR;
+          this.selectedButton = ButtonValueType.YEAR;
           break;
-      case "month":
-        this.view = "month";
-        this.dateFormat = "mm/yy";
-        this.selectedButton = "month";
+      case ButtonValueType.MONTH:
+        this.view = ViewType.MONTH;
+        this.dateFormat = DateFormatType.MONTH;
+        this.selectedButton = ButtonValueType.MONTH;
         break;
-      case "day":
-        this.view = "date";
-        this.dateFormat = "mm/dd/yy";
-        this.selectedButton = "day";
+      case ButtonValueType.DAY:
+        this.view = ViewType.DATE;
+        this.dateFormat = DateFormatType.DAY;
+        this.selectedButton = ButtonValueType.DAY;
         break;
-      case "custom" :
-        this.view = "date";
-        this.dateFormat = "mm/dd/yy";
-        this.selectionMode = "range";
-        this.selectedButton = "custom";
+      case ButtonValueType.CUSTOM:
+        this.view = ViewType.DATE;
+        this.dateFormat = DateFormatType.DAY;
+        this.selectionMode = SelectionModeType.RANGE;
+        this.selectedButton = ButtonValueType.CUSTOM;
         break;
       default: 
-        this.view = "date";
-        this.dateFormat = "mm/dd/yy";
-        this.selectedButton = "day";
+        this.view = ViewType.DATE;
+        this.dateFormat = DateFormatType.DAY;
+        this.selectedButton = ButtonValueType.DAY;
     }
   }
 
@@ -96,7 +104,7 @@ export class CalenderComponent implements OnInit {
     this.sortedData = data.sort((a, b) => {
       const isAsc = sort.direction === 'asc';
       switch (sort.active) {
-        case 'Company':
+        case FilterType.COMPANY:
           return this.compare(a.company, b.company, isAsc);
         default:
           return 0;
@@ -113,23 +121,23 @@ export class CalenderComponent implements OnInit {
   filterData(){
     let result;
     switch(this.selectedButton){
-      case "year":
+      case ButtonValueType.YEAR:
         result = this.sortedData.filter((row) => {
           return row.dateSubmitted.getFullYear() === this.selectedDate.getFullYear();
         });
         break;
-      case "month":
+      case ButtonValueType.MONTH:
         result = this.sortedData.filter((row) => {
           return (row.dateSubmitted.getFullYear() === this.selectedDate.getFullYear() 
                 && row.dateSubmitted.getMonth() === this.selectedDate.getMonth());
         });
         break;
-      case "day":
+      case ButtonValueType.DAY:
         result = this.sortedData.filter((row) => {
           return (row.dateSubmitted.toDateString() === this.selectedDate.toDateString());
         });
         break;
-      case "custom":
+      case ButtonValueType.CUSTOM:
         result = this.sortedData.filter((row) => {
           return (row.dateSubmitted.getTime() >= this.selectedDate[0].getTime() && row.dateSubmitted.getTime() <= this.selectedDate[1].getTime()) 
         });
